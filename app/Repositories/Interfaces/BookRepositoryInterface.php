@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories\Interfaces;
 
+use Illuminate\Database\Eloquent\Builder;
+
 /**
  * Interface BookRepositoryInterface
  * @package App\Repositories\Interfaces
@@ -47,4 +49,6 @@ interface BookRepositoryInterface {
      * @return bool
      */
     public function delete($id);
+
+    public function query(): Builder;
 }

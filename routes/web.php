@@ -29,7 +29,7 @@ Route::group(['middleware'=>['auth']], function (){
     Route::get('/download-book-pdf/{id}', [BookController::class, 'download']);
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('logOut', [UserController::class, 'logOut'])->name('logOut');
-    Route::get('/book_detail/{id}', [BookController::class, 'book_details']);
+    Route::get('/book_detail/{id}', [BookController::class, 'book_details'])->name('book.show');
     Route::get('/downloaded_books', [BookController::class, 'download_list'])->name('download.list');
 
 });
@@ -37,7 +37,7 @@ Route::group(['middleware'=>['auth']], function (){
 Route::group(['middleware'=>['auth','admin']], function (){
     Route::get('/add-book', [BookController::class, 'add_new_book'])->name('add.book');
     Route::post('/submit-book', [BookController::class, 'submit_book'])->name('submit.book');
-    Route::get('/book_delete/{id}', [BookController::class, 'book_delete']);
+    Route::get('/book_delete/{id}', [BookController::class, 'book_delete'])->name('book.delete');
     Route::get('/users-history', [BookController::class, 'users_history'])->name('users.history');
 
 });

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class BaseRepository
@@ -36,9 +37,9 @@ class BaseRepository {
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function all()
+    public function all(): Builder
     {
-        return $this->model->all();
+        return $this->model->newQuery();
     }
 
     /**

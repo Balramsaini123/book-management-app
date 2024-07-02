@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Interfaces\BookRepositoryInterface;
 use App\Models\Book;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class BookRepository
@@ -23,5 +24,10 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface {
     public function __construct(Book $model)
     {
         $this->model = $model;
+    }
+
+    public function query(): Builder
+    {
+        return $this->all();
     }
 }

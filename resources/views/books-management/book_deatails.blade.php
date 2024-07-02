@@ -87,8 +87,7 @@
                                             <tr>
                                                 <th>Download Pdf</th>
                                                 <td>:</td>
-                                                <td><a
-                                                        href="{{ url('/download-book-pdf/'.$data->id) }}">{{ $data->file_path }}</a>
+                                                <td><a href={{ url('/download-book-pdf/'.$data->id) }} download>Download</a>
                                                 </td>
                                             </tr>
                                         </table>

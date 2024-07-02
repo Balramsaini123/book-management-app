@@ -8,6 +8,7 @@ use App\Models\Downloadedbook;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class BookService
@@ -98,7 +99,7 @@ class BookService {
         $filepath = public_path("files/{$data->file_path}");
 
         $userEmail = Auth::user()->email;
-        $bookTitle = $this->bookRepository->findOrFail($id)->book_title;
+        $bookTitle = $data->book_title;
 
         Downloadedbook::create([
             'book_title' => $bookTitle,
@@ -138,5 +139,10 @@ class BookService {
     public function getAllDownloads()
     {
         return $this->downloadedBookRepository->getAll();
+    }
+
+    public function query(): Builder
+    {
+        return $this->bookRepository->query();
     }
 }

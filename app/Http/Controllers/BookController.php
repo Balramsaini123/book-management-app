@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookCreateRequest;
 use App\Services\BookService;
 use Illuminate\Support\Facades\Auth;
+use App\DataTables\BooksDataTable;
 
 
 /**
@@ -53,9 +54,9 @@ class BookController extends Controller
      * @return \Illuminate\View\View
      */
 
-     public function stored_books(){
-      $data = $this->bookService->getAllBooks();
-    return view('books-management.stored_books', compact('data'));
+     public function stored_books(BooksDataTable $dataTable)
+     {
+         return $dataTable->render('books-management.stored_books');
      }
 
       /**

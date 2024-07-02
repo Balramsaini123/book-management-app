@@ -9,10 +9,22 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 
+/**
+ * Class User
+ *
+ * Represents a User model in the application.
+ *
+ * @package App\Models
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'users';
 
     /**
@@ -49,11 +61,19 @@ class User extends Authenticatable
         'uuid_column' => 'string',
     ];
 
+    /**
+    * Get the books associated with the author.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
     public function books()
     {
         return $this->hasMany(Book::class);
     }
 
+    /**
+     * Boot method to hook into model events.
+     */
     protected static function boot()
     {
         parent::boot();
